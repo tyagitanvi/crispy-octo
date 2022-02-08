@@ -1,0 +1,5 @@
+.basic_main{
+    border: 0.1px solid pink;
+    min-height:100vh;
+    overflow:auto;
+    }
