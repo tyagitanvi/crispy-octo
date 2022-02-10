@@ -3,14 +3,15 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
+// import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 // import { Icon } from '@mui/material';
+import {draweroptionsjson} from '../../utilities/drawerLeftOption'
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import Icon from "@mdi/react";
+const iconSize = "2.5vw";
 
 function DrawerLeft() {
   const [state, setState] = React.useState({
@@ -36,16 +37,22 @@ function DrawerLeft() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {draweroptionsjson.map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+              <Icon
+                  path={text.icon}
+                  color={"rgba(0, 0, 0, .54)"}
+                  size={iconSize}
+                  // className={classes.listItemsIcon}
+                />
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={text.option} />
           </ListItem>
         ))}
       </List>
-      <Divider />
+      {/* <Divider />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem button key={text}>
@@ -55,7 +62,7 @@ function DrawerLeft() {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 
